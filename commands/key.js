@@ -24,10 +24,28 @@ const key = {
 
     },
     show() {
-        console.log('Hello from show 2');
+        try {
+            const keyManager = new KeyManager();
+            const key = keyManager.getKey();
+
+            console.log('Current API Key: ', key.yellow);
+
+            return key;
+        } catch (error) {
+            console.error(error.message.red);
+        }
     },
     remove() {
-        console.log('Hello from remove 3');
+        try {
+            const keyManager = new KeyManager();
+            keyManager.deleteKey();
+
+            console.log('Key Removed'.blue);
+
+            return;
+        } catch (error) {
+            console.error(error.message.red);
+        }
     }
 }
 
